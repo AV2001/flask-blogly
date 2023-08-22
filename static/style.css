@@ -51,15 +51,25 @@ form input {
     border-radius: 4px;
 }
 
-.btn {
+.btn,
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    text-decoration: none;
     width: fit-content;
     border: none;
     font-family: inherit;
     font-size: 1.6rem;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 1.2rem 1.6rem;
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.btn--add-user:link,
+.btn--add-user:visited {
+    background-color: #666;
+    color: #fff;
 }
 
 .btn--add {
@@ -69,4 +79,8 @@ form input {
 
 .btn--add:hover {
     background-color: #2f9e44;
+}
+
+ul {
+    margin: 0 0 2.4rem 2.4rem;
 }
