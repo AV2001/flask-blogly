@@ -30,6 +30,20 @@ def get_all_users():
 
 
 @app.route('/users/new')
-def add_new_user():
+def show_add_user_form():
     '''Render a template containing a form for adding a user.'''
     return render_template('add-user.html')
+
+
+@app.route('/users/new', methods=['POST'])
+def add_user():
+    '''Process form data to insert user into database.'''
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
+    image_url = request.form['image-url']
+    image_url = image_url if image_url else None
+    new_user = User(first_name=first_name,
+                    last_name=last_name, image_url=image_url)
+    db.session.add(new_user)
+    db.session.commit()
+    return redirect('/users')
