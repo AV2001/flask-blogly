@@ -9,6 +9,7 @@ html {
 }
 
 body {
+    color: #333;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 1.6rem;
@@ -23,4 +24,49 @@ body {
 
 h1 {
     margin-bottom: 4.8rem;
+}
+
+p {
+    margin-bottom: 3.2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+form input {
+    border: 2px solid #ddd;
+    outline: none;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    border-radius: 4px;
+}
+
+.btn {
+    width: fit-content;
+    border: none;
+    font-family: inherit;
+    font-size: 1.6rem;
+    border-radius: 8px;
+    padding: 1.2rem 1.6rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn--add {
+    background-color: #37b24d;
+    color: #fff;
+}
+
+.btn--add:hover {
+    background-color: #2f9e44;
 }
