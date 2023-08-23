@@ -100,13 +100,21 @@ form input {
     background-color: #c92a2a;
 }
 
-.btn--add {
+.btn--add,
+.btn--save {
     background-color: #37b24d;
     color: #fff;
 }
 
-.btn--add:hover {
+.btn--add:hover,
+.btn--save:hover {
     background-color: #2f9e44;
+}
+
+.btn--cancel:link,
+.btn--cancel:visited {
+    border: 1px solid #339af0;
+    color: #339af0;
 }
 
 ul {
