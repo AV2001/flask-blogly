@@ -18,8 +18,8 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    '''Show the home page.'''
-    return render_template('index.html')
+    '''Show the users page.'''
+    return redirect('/users')
 
 
 @app.route('/users')
