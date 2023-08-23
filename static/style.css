@@ -23,7 +23,13 @@ body {
 }
 
 h1 {
+    font-size: 5.2rem;
     margin-bottom: 4.8rem;
+}
+
+h2 {
+    font-size: 3.6rem;
+    margin-bottom: 2.4rem;
 }
 
 p {
@@ -72,6 +78,28 @@ form input {
     color: #fff;
 }
 
+.btn--edit-user:link,
+.btn--edit-user:visited {
+    background-color: #1c7ed6;
+    color: #fff;
+}
+
+.btn--edit-user:hover,
+.btn--edit-user:active {
+    background-color: #1864ab;
+}
+
+.btn--delete-user:link,
+.btn--delete-user:visited {
+    background-color: #fa5252;
+    color: #fff;
+}
+
+.btn--delete-user:hover,
+.btn--delete-user:active {
+    background-color: #c92a2a;
+}
+
 .btn--add {
     background-color: #37b24d;
     color: #fff;
@@ -83,4 +111,18 @@ form input {
 
 ul {
     margin: 0 0 2.4rem 2.4rem;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 4.8rem;
+}
+
+.user-img-box {
+    width: 25%;
+}
+
+.user-img {
+    width: 100%;
 }
