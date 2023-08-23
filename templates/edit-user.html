@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}Edit {{user.first_name}}
 {{user.last_name}}{% endblock %} {% block content %}
 <h1>Edit a user</h1>
-<form action="/user/{{user.id}}/edit" method="POST">
+<form action="/users/{{user.id}}/edit" method="POST">
     <div>
         <label for="first-name">First Name</label>
         <input
