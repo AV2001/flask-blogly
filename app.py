@@ -61,3 +61,18 @@ def show_edit_user_form(user_id):
     '''Render template containing a form to edit user. '''
     user = User.query.get(user_id)
     return render_template('edit-user.html', user=user)
+
+
+@app.route('/users/<int:user_id>/edit', methods=['POST'])
+def edit_user(user_id):
+    '''Process form data to edit a particular user in the database.'''
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
+    image_url = request.form['image-url']
+    user = User.query.get(user_id)
+    user.first_name = first_name
+    user.last_name = last_name
+    user.image_url = image_url
+    db.session.add(user)
+    db.session.commit()
+    return redirect('/users')
