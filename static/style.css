@@ -123,6 +123,9 @@ form input {
 
 ul {
     margin: 0 0 2.4rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 ul a {
