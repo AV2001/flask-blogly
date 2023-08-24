@@ -89,14 +89,12 @@ form input {
     background-color: #1864ab;
 }
 
-.btn--delete-user:link,
-.btn--delete-user:visited {
+.btn--delete-user {
     background-color: #fa5252;
     color: #fff;
 }
 
-.btn--delete-user:hover,
-.btn--delete-user:active {
+.btn--delete-user:hover {
     background-color: #c92a2a;
 }
 
@@ -133,4 +131,9 @@ ul {
 
 .user-img {
     width: 100%;
+}
+
+.user-content-box div {
+    display: flex;
+    gap: 1.2rem;
 }
