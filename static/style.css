@@ -36,6 +36,12 @@ p {
     margin-bottom: 3.2rem;
 }
 
+a:link,
+a:visited {
+    color: #1c7ed6;
+    font-weight: 500;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -117,6 +123,10 @@ form input {
 
 ul {
     margin: 0 0 2.4rem 2.4rem;
+}
+
+ul a {
+    text-decoration: none;
 }
 
 .user {
