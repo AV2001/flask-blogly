@@ -1,15 +1,15 @@
-{% extends 'base.html' %} {% block title %}{{user.first_name}}
-{{user.last_name}}{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}{{user.get_full_name()}}{% endblock
+%} {% block content %}
 <div class="user">
     <div class="user-img-box">
         <img
             src="{{user.image_url}}"
-            alt="Image of {{user.first_name}} {{user.last_name}}"
+            alt="Image of {{user.get_full_name()}}"
             class="user-img"
         />
     </div>
     <div class="user-content-box">
-        <h2>{{user.first_name}} {{user.last_name}}</h2>
+        <h2>{{user.get_full_name()}}</h2>
         <div>
             <a href="/users/{{user.id}}/edit" class="btn btn--edit-user"
                 >Edit</a
