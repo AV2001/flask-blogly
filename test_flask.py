@@ -39,3 +39,10 @@ class UserViewsTestCase(TestCase):
             html = response.get_data(as_text=True)
             self.assertEqual(response.status_code, 200)
             self.assertIn('Jane Doe', html)
+
+    def test_show_user(self):
+        with app.test_client() as client:
+            response = client.get(f'/users/{self.user_id}')
+            html = response.get_data(as_text=True)
+            self.assertEqual(response.status_code, 200)
+            self.assertIn('<h2>John Doe</h2>', html)
