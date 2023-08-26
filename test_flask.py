@@ -53,3 +53,11 @@ class UserViewsTestCase(TestCase):
             html = response.get_data(as_text=True)
             self.assertEqual(response.status_code, 200)
             self.assertIn('John Doe', html)
+
+    def test_edit_user(self):
+        with app.test_client() as client:
+            data = {'first-name': 'Jane', 'last-name': 'Doe', 'image-url': ''}
+            response = client.post(f'/users/{self.user_id}/edit', data=data, follow_redirects=True)
+            html = response.get_data(as_text=True)
+            self.assertEqual(response.status_code, 200)
+            self.assertIn('Jane Doe', html)
