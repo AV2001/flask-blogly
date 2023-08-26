@@ -30,3 +30,12 @@ class UserViewsTestCase(TestCase):
             html = response.get_data(as_text=True)
             self.assertEqual(response.status_code, 200)
             self.assertIn('<h1>Users</h1>', html)
+
+    def test_add_user(self):
+        with app.test_client() as client:
+            data = {'first-name': 'Jane', 'last-name': 'Doe', 'image-url': ''}
+            response = client.post(
+                '/users/new', data=data, follow_redirects=True)
+            html = response.get_data(as_text=True)
+            self.assertEqual(response.status_code, 200)
+            self.assertIn('Jane Doe', html)
