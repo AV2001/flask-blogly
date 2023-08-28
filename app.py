@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, User, Post
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -93,3 +94,19 @@ def show_new_post_form(user_id):
     '''Render template that allows user to create new post.'''
     user = User.query.get(user_id)
     return render_template('add-post.html', user=user)
+
+
+@app.route('/users/<int:user_id>/posts/new', methods=['POST'])
+def add_post(user_id):
+    '''Add a new post for a particular user.'''
+    title = request.form['title']
+    content = request.form['content']
+    now = datetime.now()
+    formatted_date_time = now.strftime('%a %b %d %Y, %I:%M %p')
+    created_at = formatted_date_time
+    user_id = user_id
+    new_post = Post(title=title, content=content,
+                    created_at=created_at, user_id=user_id)
+    db.session.add(new_post)
+    db.session.commit()
+    return redirect('/users')
