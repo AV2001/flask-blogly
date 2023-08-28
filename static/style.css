@@ -90,13 +90,17 @@ form input {
 }
 
 .btn--edit-user:link,
-.btn--edit-user:visited {
+.btn--edit-user:visited,
+.btn--add-post:link,
+.btn--add-post:visited {
     background-color: #1c7ed6;
     color: #fff;
 }
 
 .btn--edit-user:hover,
-.btn--edit-user:active {
+.btn--edit-user:active,
+.btn--add-post:hover,
+.btn--add-post:active {
     background-color: #1864ab;
 }
 
