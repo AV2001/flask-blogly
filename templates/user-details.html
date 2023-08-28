@@ -10,7 +10,7 @@ block content %}
     </div>
     <div class="user-content-box">
         <h2>{{user.full_name}}</h2>
-        <div>
+        <div class="buttons">
             <a href="/users/{{user.id}}/edit" class="btn btn--edit-user"
                 >Edit</a
             >
@@ -22,6 +22,16 @@ block content %}
                 />
             </form>
         </div>
+        <h3>Posts</h3>
+        {% if posts %}
+        <ul>
+            {% for post in posts %}
+            <li>{{post.title}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>You have not written any posts yet.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
