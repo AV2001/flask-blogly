@@ -32,6 +32,9 @@ block content %}
         {% else %}
         <p>You have not written any posts yet.</p>
         {% endif %}
+        <a href="/users/{{user.id}}/posts/new" class="btn btn--add-post"
+            >Add Post</a
+        >
     </div>
 </div>
 {% endblock %}
