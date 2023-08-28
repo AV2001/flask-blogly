@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, User
+from models import db, User, Post
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -53,7 +53,8 @@ def add_user():
 def show_user(user_id):
     '''Show details of a particular user'''
     user = User.query.get_or_404(user_id)
-    return render_template('user-details.html', user=user)
+    posts = user.posts
+    return render_template('user-details.html', user=user, posts=posts)
 
 
 @app.route('/users/<int:user_id>/edit')
@@ -85,3 +86,10 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return redirect('/users')
+
+
+@app.route('/users/<int:user_id>/posts/new')
+def show_new_post_form(user_id):
+    '''Render template that allows user to create new post.'''
+    user = User.query.get(user_id)
+    return render_template('add-post.html', user=user)
