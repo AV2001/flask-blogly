@@ -58,7 +58,8 @@ form label {
     margin-bottom: 1.2rem;
 }
 
-form input {
+form input,
+textarea {
     border: 2px solid #ddd;
     outline: none;
     width: 100%;
@@ -120,13 +121,15 @@ form input {
 }
 
 .btn--add,
-.btn--save {
+.btn--save,
+.btn--edit {
     background-color: #37b24d;
     color: #fff;
 }
 
 .btn--add:hover,
-.btn--save:hover {
+.btn--save:hover,
+.btn--edit:hover {
     background-color: #2f9e44;
 }
 
