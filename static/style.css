@@ -92,7 +92,9 @@ form input {
 .btn--edit-user:link,
 .btn--edit-user:visited,
 .btn--add-post:link,
-.btn--add-post:visited {
+.btn--add-post:visited,
+.btn--edit-post:link,
+.btn--edit-post:visited {
     background-color: #1c7ed6;
     color: #fff;
 }
@@ -100,16 +102,20 @@ form input {
 .btn--edit-user:hover,
 .btn--edit-user:active,
 .btn--add-post:hover,
-.btn--add-post:active {
+.btn--add-post:active,
+.btn--edit-post:hover,
+.btn--edit-post:active {
     background-color: #1864ab;
 }
 
-.btn--delete-user {
+.btn--delete-user,
+.btn--delete-post {
     background-color: #fa5252;
     color: #fff;
 }
 
-.btn--delete-user:hover {
+.btn--delete-user:hover,
+.btn--delete-post:hover {
     background-color: #c92a2a;
 }
 
@@ -161,5 +167,7 @@ ul a {
 }
 
 .buttons {
+    display: flex;
+    gap: 0.8rem;
     margin-bottom: 3.2rem;
 }
