@@ -110,3 +110,10 @@ def add_post(user_id):
     db.session.add(new_post)
     db.session.commit()
     return redirect('/users')
+
+
+@app.route('/posts/<int:post_id>')
+def show_post(post_id):
+    '''Show details of a particular post.'''
+    post = Post.query.get(post_id)
+    return render_template('post-details.html', post=post, user=post.user)
