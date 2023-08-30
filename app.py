@@ -52,7 +52,7 @@ def add_user():
 
 @app.route('/users/<int:user_id>')
 def show_user(user_id):
-    '''Show details of a particular user'''
+    '''Show details of a particular user.'''
     user = User.query.get_or_404(user_id)
     posts = user.posts
     return render_template('user-details.html', user=user, posts=posts)
@@ -60,7 +60,7 @@ def show_user(user_id):
 
 @app.route('/users/<int:user_id>/edit')
 def show_edit_user_form(user_id):
-    '''Render template containing a form to edit user. '''
+    '''Render template containing a form to edit user.'''
     user = User.query.get(user_id)
     return render_template('edit-user.html', user=user)
 
@@ -117,3 +117,10 @@ def show_post(post_id):
     '''Show details of a particular post.'''
     post = Post.query.get(post_id)
     return render_template('post-details.html', post=post, user=post.user)
+
+
+@app.route('/posts/<int:post_id>/edit')
+def edit_post(post_id):
+    '''Render template containing a form to edit a post.'''
+    post = Post.query.get(post_id)
+    return render_template('edit-post.html', post=post)
