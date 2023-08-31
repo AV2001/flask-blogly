@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, User, Post
-from datetime import datetime
+from utilities import get_current_date_time
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -101,9 +101,8 @@ def add_post(user_id):
     '''Add a new post for a particular user.'''
     title = request.form['title']
     content = request.form['content']
-    now = datetime.now()
-    formatted_date_time = now.strftime('%a %b %d %Y, %I:%M %p')
-    created_at = formatted_date_time
+    content = content if content else None
+    created_at = get_current_date_time()
     user_id = user_id
     new_post = Post(title=title, content=content,
                     created_at=created_at, user_id=user_id)
