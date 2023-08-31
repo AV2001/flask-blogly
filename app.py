@@ -19,8 +19,11 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    '''Show the users page.'''
-    return redirect('/users')
+    '''Show the home page.'''
+    posts = Post.query.order_by(Post.created_at.desc()).all()
+    for post in posts:
+        post.created_at = post.created_at.strftime('%B %d, %Y, %I:%M %p')
+    return render_template('index.html', posts=posts)
 
 
 @app.route('/users')
