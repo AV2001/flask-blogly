@@ -40,8 +40,16 @@ class Post(db.Model):
         return f'<Post id={self.id} title={self.title} content={self.content} created_at={self.created_at}>'
 
 
-class Tag:
+class Tag(db.Model):
     __tablename__ = 'tags'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False, unique=True)
+
+
+class PostTag(db.Model):
+    __tablename__ = 'posts_tags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
