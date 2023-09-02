@@ -36,6 +36,10 @@ class Post(db.Model):
     user = db.relationship('User', backref='posts',
                            lazy='joined', cascade="all")
 
+    tags = db.relationship('Tag', secondary='posts_tags', backref='posts')
+
+    post_tags = db.relationship('PostTag', backref='post', lazy='dynamic')
+
     def __repr__(self):
         return f'<Post id={self.id} title={self.title} content={self.content} created_at={self.created_at}>'
 
@@ -45,6 +49,8 @@ class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False, unique=True)
+
+    post_tags = db.relationship('PostTag', backref='tag', laz='dynamic')
 
 
 class PostTag(db.Model):
