@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, User, Post
+from models import db, User, Post, Tag
 from utilities import get_current_date_time
 
 app = Flask(__name__)
@@ -148,3 +148,9 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect('/users')
+
+
+@app.route('/tags')
+def show_tags():
+    tags = Tag.query.all()
+    return render_template('tags.html', tags=tags)
