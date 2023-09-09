@@ -152,5 +152,12 @@ def delete_post(post_id):
 
 @app.route('/tags')
 def show_tags():
+    '''Show all tags.'''
     tags = Tag.query.all()
     return render_template('tags.html', tags=tags)
+
+
+@app.route('/tags/new')
+def add_new_tag_form():
+    '''Render template to add new tag.'''
+    return render_template('add-tag.html')
