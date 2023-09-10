@@ -197,3 +197,12 @@ def show_tag(tag_id):
     tag = Tag.query.get(tag_id)
     posts = tag.posts
     return render_template('tag-details.html', tag=tag, posts=posts)
+
+
+@app.route('/tags/<int:tag_id>/delete', methods=['POST'])
+def delete_tag(tag_id):
+    '''Delete a tag from the database.'''
+    tag = Tag.query.get(tag_id)
+    db.session.delete(tag)
+    db.session.commit()
+    return redirect('/tags')
