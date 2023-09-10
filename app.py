@@ -180,6 +180,17 @@ def show_edit_tag_form(tag_id):
     return render_template('edit-tag.html', tag=tag)
 
 
+@app.route('/tags/<int:tag_id>/edit', methods=['POST'])
+def edit_tag(tag_id):
+    '''Process form data to edit a tag in the database.'''
+    name = request.form['name']
+    tag = Tag.query.get(tag_id)
+    tag.name = name
+    db.session.add(tag)
+    db.session.commit()
+    return redirect('/tags')
+
+
 @app.route('/tags/<int:tag_id>')
 def show_tag(tag_id):
     '''Render template to show all posts for a tag.'''
