@@ -178,3 +178,11 @@ def show_edit_tag_form(tag_id):
     '''Render template for user to edit tag.'''
     tag = Tag.query.get(tag_id)
     return render_template('edit-tag.html', tag=tag)
+
+
+@app.route('/tags/<int:tag_id>')
+def show_tag(tag_id):
+    '''Render template to show all posts for a tag.'''
+    tag = Tag.query.get(tag_id)
+    posts = tag.posts
+    return render_template('tag-details.html', tag=tag, posts=posts)
