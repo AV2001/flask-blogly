@@ -97,7 +97,9 @@ textarea {
 .btn--edit-post:link,
 .btn--edit-post:visited,
 .btn--add-tag:link,
-.btn--add-tag:visited {
+.btn--add-tag:visited,
+.btn--edit-tag:link,
+.btn--edit-tag:visited {
     background-color: #1c7ed6;
     color: #fff;
 }
@@ -109,7 +111,9 @@ textarea {
 .btn--edit-post:hover,
 .btn--edit-post:active,
 .btn--add-tag:hover,
-.btn--add-tag:active {
+.btn--add-tag:active,
+.btn--edit-tag:hover,
+.btn--edit-tag:active {
     background-color: #1864ab;
 }
 
