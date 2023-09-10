@@ -117,14 +117,12 @@ textarea {
     background-color: #1864ab;
 }
 
-.btn--delete-user,
-.btn--delete-post {
+.btn--delete {
     background-color: #fa5252;
     color: #fff;
 }
 
-.btn--delete-user:hover,
-.btn--delete-post:hover {
+.btn--delete:hover {
     background-color: #c92a2a;
 }
 
