@@ -171,3 +171,10 @@ def add_tag():
     db.session.add(new_tag)
     db.session.commit()
     return redirect('/tags')
+
+
+@app.route('/tags/<int:tag_id>/edit')
+def show_edit_tag_form(tag_id):
+    '''Render template for user to edit tag.'''
+    tag = Tag.query.get(tag_id)
+    return render_template('edit-tag.html', tag=tag)
