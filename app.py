@@ -96,7 +96,8 @@ def delete_user(user_id):
 def show_new_post_form(user_id):
     '''Render template that allows user to create new post.'''
     user = User.query.get(user_id)
-    return render_template('add-post.html', user=user)
+    tags = Tag.query.all()
+    return render_template('add-post.html', user=user, tags=tags)
 
 
 @app.route('/users/<int:user_id>/posts/new', methods=['POST'])
@@ -104,11 +105,14 @@ def add_post(user_id):
     '''Add a new post for a particular user.'''
     title = request.form['title']
     content = request.form['content']
+    selected_tags = request.form.getlist('tag')
+    tags = Tag.query.filter(Tag.id.in_(selected_tags)).all()
     content = content if content else None
     created_at = get_current_date_time()
     user_id = user_id
     new_post = Post(title=title, content=content,
                     created_at=created_at, user_id=user_id)
+    new_post.tags = tags
     db.session.add(new_post)
     db.session.commit()
     return redirect('/users')
@@ -118,7 +122,8 @@ def add_post(user_id):
 def show_post(post_id):
     '''Show details of a particular post.'''
     post = Post.query.get(post_id)
-    return render_template('post-details.html', post=post, user=post.user)
+    tags = post.tags
+    return render_template('post-details.html', post=post, tags=tags, user=post.user)
 
 
 @app.route('/posts/<int:post_id>/edit')
@@ -157,6 +162,14 @@ def show_tags():
     return render_template('tags.html', tags=tags)
 
 
+@app.route('/tags/<int:tag_id>')
+def show_tag(tag_id):
+    '''Render template to show all posts for a tag.'''
+    tag = Tag.query.get(tag_id)
+    posts = tag.posts
+    return render_template('tag-details.html', tag=tag, posts=posts)
+
+
 @app.route('/tags/new')
 def add_tag_form():
     '''Render template to add new tag.'''
@@ -189,14 +202,6 @@ def edit_tag(tag_id):
     db.session.add(tag)
     db.session.commit()
     return redirect('/tags')
-
-
-@app.route('/tags/<int:tag_id>')
-def show_tag(tag_id):
-    '''Render template to show all posts for a tag.'''
-    tag = Tag.query.get(tag_id)
-    posts = tag.posts
-    return render_template('tag-details.html', tag=tag, posts=posts)
 
 
 @app.route('/tags/<int:tag_id>/delete', methods=['POST'])
