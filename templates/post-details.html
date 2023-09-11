@@ -3,6 +3,7 @@ content %}
 <h2>{{post.title}}!</h2>
 <p>{{post.content}}</p>
 <p><em>By {{user.full_name}}</em></p>
+{% if tags %}
 <div class="tags">
     <p>
         <strong>Tags:</strong>
@@ -11,6 +12,7 @@ content %}
         {% endfor %}
     </p>
 </div>
+{% endif %}
 <div class="buttons">
     <a href="/users" class="btn btn--cancel">Cancel</a>
     <a href="/posts/{{post.id}}/edit" class="btn btn--edit-post">Edit</a>
