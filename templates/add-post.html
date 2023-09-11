@@ -10,6 +10,21 @@ content %}
         <label for="content">Content</label>
         <input type="text" name="content" id="content" />
     </div>
+    {% if tags %}
+    <div class="checkbox">
+        {% for tag in tags %}
+        <div>
+            <input
+                type="checkbox"
+                name="tag"
+                id="{{tag.name}}"
+                value="{{tag.id}}"
+            />
+            <label for="{{tag.name}}">{{tag.name}}</label>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <div>
         <a href="/users" class="btn btn--cancel">Cancel</a>
         <button class="btn btn--add">Add</button>
