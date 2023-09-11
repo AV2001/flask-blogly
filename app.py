@@ -130,7 +130,8 @@ def show_post(post_id):
 def show_edit_post_form(post_id):
     '''Render template containing a form to edit a post.'''
     post = Post.query.get(post_id)
-    return render_template('edit-post.html', post=post)
+    tags = post.tags
+    return render_template('edit-post.html', post=post, tags=tags)
 
 
 @app.route('/posts/<int:post_id>/edit', methods=['POST'])
