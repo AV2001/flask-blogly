@@ -175,7 +175,19 @@ ul a {
     gap: 1.2rem;
 }
 
-.buttons {
+.tag {
+    display: inline-block;
+    background-color: #1864ab;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-style: italic;
+    padding: 0.8rem 0.4rem;
+    border-radius: 10px;
+}
+
+.buttons,
+.tags {
     display: flex;
     gap: 0.8rem;
     margin-bottom: 3.2rem;
