@@ -8,13 +8,34 @@
     </div>
     <div>
         <label for="content">Post Content</label>
-        <textarea
-            name="content"
-            id="content"
-            cols="100"
-            rows="10"
-        >{{post.content}}</textarea>
+        <textarea name="content" id="content" cols="100" rows="10">
+{{post.content}}</textarea
+        >
     </div>
+    <div class="checkbox">
+        {% for tag in tags %}
+        <div>
+            {% if tag in post.tags %}
+            <input
+                type="checkbox"
+                name="tag"
+                id="{{tag.name}}"
+                value="{{tag.id}}"
+                checked
+            />
+            {% else %}
+            <input
+                type="checkbox"
+                name="tag"
+                id="{{tag.name}}"
+                value="{{tag.id}}"
+            />
+            {% endif %}
+            <label for="{{tag.name}}">{{tag.name}}</label>
+        </div>
+        {% endfor %}
+    </div>
+
     <div class="buttons">
         <a href="/users" class="btn btn--cancel">Cancel</a>
         <button class="btn btn--edit">Edit</button>
