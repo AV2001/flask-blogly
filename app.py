@@ -130,7 +130,7 @@ def show_post(post_id):
 def show_edit_post_form(post_id):
     '''Render template containing a form to edit a post.'''
     post = Post.query.get(post_id)
-    tags = post.tags
+    tags = Tag.query.all()
     return render_template('edit-post.html', post=post, tags=tags)
 
 
@@ -139,9 +139,12 @@ def edit_post(post_id):
     '''Process form data to edit a post.'''
     title = request.form['title']
     content = request.form['content']
+    selected_tags = request.form.getlist('tag')
+    tags = Tag.query.filter(Tag.id.in_(selected_tags)).all()
     post = Post.query.get(post_id)
     post.title = title
     post.content = content
+    post.tags = tags
     db.session.add(post)
     db.session.commit()
     return redirect('/users')
