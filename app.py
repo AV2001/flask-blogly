@@ -135,7 +135,7 @@ def show_edit_post_form(post_id):
 
 
 @app.route('/posts/<int:post_id>/edit', methods=['POST'])
-def edit_form(post_id):
+def edit_post(post_id):
     '''Process form data to edit a post.'''
     title = request.form['title']
     content = request.form['content']
