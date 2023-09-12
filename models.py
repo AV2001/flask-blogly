@@ -12,6 +12,8 @@ class User(db.Model):
     image_url = db.Column(
         db.String, nullable=False, default='https://i.stack.imgur.com/l60Hf.png')
 
+    posts = db.relationship('Post', cascade='all, delete-orphan')
+
     def __repr__(self):
         return f'<User id={self.id} first_name={self.first_name} last_name={self.last_name} image_url={self.image_url}>'
 
@@ -33,13 +35,12 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', backref='posts',
-                           lazy='joined', cascade="all")
+    user = db.relationship('User')
 
     tags = db.relationship('Tag', secondary='posts_tags',
                            back_populates='posts')
-
-    post_tags = db.relationship('PostTag', back_populates='post')
+    post_tags = db.relationship(
+        'PostTag', back_populates='post', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f'<Post id={self.id} title={self.title} content={self.content} created_at={self.created_at}>'
@@ -53,7 +54,8 @@ class Tag(db.Model):
 
     posts = db.relationship(
         'Post', secondary='posts_tags', back_populates='tags')
-    post_tags = db.relationship('PostTag', back_populates='tag')
+    post_tags = db.relationship(
+        'PostTag', back_populates='tag', cascade='all, delete-orphan')
 
 
 class PostTag(db.Model):
